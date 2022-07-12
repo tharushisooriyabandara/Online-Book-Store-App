@@ -1,13 +1,12 @@
-import React from 'react';
-import { AppBar , Typography } from '@mui/material';
+import React, { useState } from "react";
+import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import { NavLink } from "react-router-dom";
-
 const Header = () => {
-    const [value, setValue] = useState();
-    return 
+  const [value, setValue] = useState();
+  return (
     <div>
-        <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
+      <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
         <Toolbar>
           <NavLink to="/" style={{ color: "white" }}>
             <Typography>
@@ -27,8 +26,8 @@ const Header = () => {
           </Tabs>
         </Toolbar>
       </AppBar>
-    </div>;
-
+    </div>
+  );
 };
 
 export default Header;

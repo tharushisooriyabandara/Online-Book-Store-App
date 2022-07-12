@@ -1,33 +1,28 @@
-import React, { useState } from "react";
-import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
-import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
-import { NavLink } from "react-router-dom";
-const Header = () => {
-  const [value, setValue] = useState();
+import React from "react";
+import Header from "./components/Header";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import AddBook from "./components/AddBook";
+import Books from "./components/Book/Books";
+import About from "./components/About";
+import BookDetail from "./components/Book/BookDetail";
+function App() {
   return (
-    <div>
-      <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
-        <Toolbar>
-          <NavLink to="/" style={{ color: "white" }}>
-            <Typography>
-              <LibraryBooksOutlinedIcon />
-            </Typography>
-          </NavLink>
-          <Tabs
-            sx={{ ml: "auto" }}
-            textColor="inherit"
-            indicatorColor="primary"
-            value={value}
-            onChange={(e, val) => setValue(val)}
-          >
-            <Tab LinkComponent={NavLink} to="/add" label="Add product" />
-            <Tab LinkComponent={NavLink} to="/books" label="Books" />
-            <Tab LinkComponent={NavLink} to="/about" label="About Us" />
-          </Tabs>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <React.Fragment>
+      <header>
+        <Header />
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} exact />
+          <Route path="/add" element={<AddBook />} exact />
+          <Route path="/books" element={<Books />} exact />
+          <Route path="/about" element={<About />} exact />
+          <Route path="/books/:id" element={<BookDetail />} exact />
+        </Routes>
+      </main>
+    </React.Fragment>
   );
-};
+}
 
-export default Header;
+export default App;
